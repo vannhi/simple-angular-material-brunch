@@ -1,0 +1,48 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
+    meta(name='viewport', content='width=device-width', initial-scale='1.0')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title One page todo app Angular Material
+    link(rel='stylesheet', href='/css/vendor.css')
+    link(rel='stylesheet', href='/css/app.css')
+
+  body(ng-app='app', layout="column")
+    md-toolbar(layout="row", layout-align="start center")
+      .md-toolbar-tools
+        span Todo
+    md-content.md-padding
+      md-content.todo-content(layout="column", ng-controller='TodoCtrl')
+        h2.md-display-1 Todo
+        p {{remaining()}} of {{todos.length}} remaining [
+          a(href='', ng-click='archive()') archive
+          | ]
+        form(ng-submit='addTodo()')
+          md-content(layout-padding, layout="row")
+            md-input-container
+              label add new todo here
+              input(type='text', ng-model='todoText', size='30', required)
+            md-input-container
+              md-button.md-fab.md-mini(aria-label="add")
+                ng-md-icon(icon="add")
+        md-list
+          md-list-item(ng-repeat='todo in todos')
+            md-checkbox(ng-model='todo.done', aria-label='{{todo.text}}')
+            .md-list-item-text
+              span.todo-text(ng-class='{done: todo.done}') {{todo.text}}
+      div Angular Material Brunch app: v<span app-version></span>
+
+    md-toolbar(layout="row", layout-align="start center")
+      md-button(href='https://github.com/vannhi/angular-material-brunch.git')
+        span.md-caption angular-material-brunch | source
+
+    //if lte IE 7
+      script(src='http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js')
+    //if lte IE 8
+      script(src='//html5shiv.googlecode.com/svn/trunk/html5.js')
+
+    script(src='/js/vendor.js')
+    script(src='/js/app.js')
