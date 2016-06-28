@@ -15,7 +15,7 @@ This is for a very simple single page, without navigation (no router).
 
 Or if you have **Brunch** installed run:
 
-`brunch n gh:vannhi/simple-angular-material-brunch myapp`
+`brunch new myapp -s gh:vannhi/simple-angular-material-brunch`
 
 You must also install packages using bower. Either
 
